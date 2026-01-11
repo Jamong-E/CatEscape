@@ -21,10 +21,18 @@ public class HazardControl : MonoBehaviour
         if (transform.position.y < 7) {
             dropSpeed += 0.01f;
             transform.Translate(0, -1 * dropSpeed, 0);
-            if (transform.position.y < -6) { Destroy(gameObject); }
+            if (transform.position.y < -6)
+            {
+                GameManager.GetComponent<GameManager>().Scored();
+                Destroy(gameObject);
+            }
             float xDist = transform.position.x - Player.transform.position.x;
             float yDist = transform.position.y - Player.transform.position.y;
-            if (xDist * xDist + yDist * yDist < 0.7) { GameManager.GetComponent<GameManager>().Hit(); Destroy(gameObject); }
+            if (xDist * xDist + yDist * yDist < 0.7)
+            {
+                GameManager.GetComponent<GameManager>().Hit();
+                Destroy(gameObject);
+            }
         }
     }
 }

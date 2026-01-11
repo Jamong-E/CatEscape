@@ -7,11 +7,12 @@ public class GeneratorScript : MonoBehaviour
     public GameObject hazardPrefab;
     float spawnTime = 1.0f;
     float delta = 0f;
+    public bool play = true;
 
     void Update()
     {
         delta += Time.deltaTime;
-        if (delta > spawnTime)
+        if (play && delta > spawnTime)
         {
             delta = 0f;
             GameObject ar = Instantiate(hazardPrefab);      // prefab에는 레퍼런스를 걸어놓을 수 없어서, UnassignedReferenceException이 뜬다
